@@ -5,7 +5,7 @@ class StringCalculator
     if numbers.start_with?('//')
       delimiter_part, numbers_string = numbers.split("\n", 2)
       delimiter = delimiter_part[2..-1]
-      numbers_array = generate_array_with_delimiter(numbers, delimiter_new_line, delimiter)
+      numbers_array = generate_array_with_delimiter(numbers_string, delimiter_new_line, delimiter)
     else
       numbers_array = generate_array_with_delimiter(numbers, delimiter_new_line, ",")
     end
