@@ -5,15 +5,17 @@ class StringCalculator
     if numbers.start_with?('//')
       delimiter_part, numbers_string = numbers.split("\n", 2)
       delimiter = delimiter_part[2..-1]
-      numbers_string = numbers.gsub(delimiter_new_line, delimiter)
-      numbers_array = numbers_string.split(delimiter).map(&:to_i)
+      numbers_array = generate_array_with_delimiter(numbers, delimiter_new_line, delimiter)
     else
-      numbers_string = numbers.gsub(delimiter_new_line, ",")
-      numbers_array = numbers_string.split(",").map(&:to_i)
+      numbers_array = generate_array_with_delimiter(numbers, delimiter_new_line, ",")
     end
     negatives = numbers_array.select { |n| n < 0 }
     raise "negative numbers not allowed #{negatives.join(', ')}" unless negatives.empty?
     numbers_array.sum
+  end
+  def generate_array_with_delimiter(numbers, delimiter_source, delimiter_destination)
+    numbers_string = numbers.gsub(delimiter_source, delimiter_destination)
+    numbers_string.split(delimiter_destination).map(&:to_i)
   end
 end
 
