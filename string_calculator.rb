@@ -13,9 +13,9 @@ class StringCalculator
     raise "negative numbers not allowed #{negatives.join(', ')}" unless negatives.empty?
     numbers_array.sum
   end
-  def generate_array_with_delimiter(numbers, delimiter_source, delimiter_destination)
-    numbers_string = numbers.gsub(delimiter_source, delimiter_destination)
-    numbers_string.split(delimiter_destination).map(&:to_i)
+  def generate_array_with_delimiter(numbers, from_delimiter, to_delimiter)
+    numbers_string = numbers.gsub(from_delimiter, to_delimiter)
+    numbers_string.split(to_delimiter).map(&:to_i)
   end
 end
 
