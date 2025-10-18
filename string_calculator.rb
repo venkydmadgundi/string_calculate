@@ -21,3 +21,4 @@ puts calculator.add("1,2,3")
 puts calculator.add("1\n2,3,4")
 puts calculator.add("//;\n1;2")
 puts calculator.add("//;\n1;2;3;5\n6")
+
