@@ -11,6 +11,8 @@ class StringCalculator
       numbers_string = numbers.gsub(delimiter_new_line, ",")
       numbers_array = numbers_string.split(",").map(&:to_i)
     end
+    negatives = numbers_array.select { |n| n < 0 }
+    raise "negative numbers not allowed #{negatives.join(', ')}" unless negatives.empty?
     numbers_array.sum
   end
 end
@@ -21,4 +23,4 @@ puts calculator.add("1,2,3")
 puts calculator.add("1\n2,3,4")
 puts calculator.add("//;\n1;2")
 puts calculator.add("//;\n1;2;3;5\n6")
-
+puts calculator.add("1,-2,3,-4")
